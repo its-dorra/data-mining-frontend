@@ -10,12 +10,21 @@
 	import Step3 from '$lib/components/step3.svelte';
 	import Step4 from '$lib/components/step4.svelte';
 	import type { FormData } from '$lib/types';
+	import Dialog from '$lib/components/dialog.svelte';
 
 	let step = persistData('step', 1);
 
 	export const formData = persistData('form-state', {} as FormData);
 
 	let error = $state('');
+
+	let loading = $state(false);
+
+	let isDialogOpen = $state(false);
+
+	const closeDialog = (isOpen: boolean) => {
+		isDialogOpen = isOpen;
+	};
 
 	const checkFormData = () => {
 		error = '';
@@ -72,10 +81,14 @@
 		step.value--;
 	};
 
-	const handleSubmit = (e: Event) => {
+	const handleSubmit = async (e: Event) => {
 		e.preventDefault();
 		checkFormData();
 		if (error) return;
+		loading = true;
+		await new Promise((resolve) => setTimeout(resolve, 2000));
+		loading = false;
+		isDialogOpen = true;
 		console.log(formData.value);
 	};
 </script>
@@ -129,6 +142,7 @@
 				>
 			{:else}
 				<Button
+					disabled={loading}
 					type="button"
 					onclick={handleSubmit}
 					class="bg-gray-900 text-white hover:bg-gray-800">Submit</Button
@@ -138,3 +152,4 @@
 	</Card.Card>
 	<Progress class="max-w-lg shadow-lg" value={step.value} max={4} />
 </div>
+<Dialog {closeDialog} isOpen={isDialogOpen} />
