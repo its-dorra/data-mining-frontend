@@ -3,12 +3,7 @@ export const formFields = {
 	currentYear: ['First year', 'Second year', 'Third year', 'Fourth year'],
 	bacSpecialty: ['Science', 'Mathematics', 'Technical maths'],
 	hoursPerWeek: ['10-17', '18-25', '26-33', '34-51', 'More than 41'],
-	studyPlace: [
-		"In the school's library",
-		'In your room (dorms)',
-		'In your room (dorms)',
-		"In the dorms' library"
-	],
+	studyPlace: ["In the school's library", 'In your room (dorms)', "In the dorms' library"],
 	studyCompanion: ['Alone', 'In peer', 'With a group'],
 	learningMethods: [
 		'Lectures',
@@ -47,13 +42,5 @@ export const formFields = {
 	mathsRating: Array.from({ length: 10 }, (_, i) => `${i + 1}`),
 	programmingRating: Array.from({ length: 10 }, (_, i) => `${i + 1}`),
 	csRating: Array.from({ length: 10 }, (_, i) => `${i + 1}`),
-	s1: Array.from({ length: 20 }, (_, i) => `${i + 1}`),
-	s2: Array.from({ length: 20 }, (_, i) => `${i + 1}`),
-	s3: Array.from({ length: 20 }, (_, i) => `${i + 1}`),
-	s4: Array.from({ length: 20 }, (_, i) => `${i + 1}`),
-	s5: Array.from({ length: 20 }, (_, i) => `${i + 1}`),
-	s6: Array.from({ length: 20 }, (_, i) => `${i + 1}`),
-	annual1: Array.from({ length: 20 }, (_, i) => `${i + 1}`),
-	annual2: Array.from({ length: 20 }, (_, i) => `${i + 1}`),
-	annual3: Array.from({ length: 20 }, (_, i) => `${i + 1}`)
+	annual1: Array.from({ length: 20 }, (_, i) => `${i + 1}`)
 } as const;

@@ -1,17 +1,17 @@
 import { browser } from '$app/environment';
 
 export const persistData = <T>(key: string, initialData: T) => {
-	if (!browser) return initialData;
+	// eslint-disable-next-line prefer-const
+	let storage = $state<{ value: T }>({ value: initialData });
 
-	const storedData = localStorage.getItem(key);
-
-	const data = storedData ? (JSON.parse(storedData) as T) : initialData;
-
-	const store = $state(data);
+	if (browser) {
+		const item = localStorage.getItem(key);
+		if (item) storage.value = JSON.parse(item);
+	}
 
 	$effect(() => {
-		localStorage.setItem(key, JSON.stringify(store));
+		localStorage.setItem(key, JSON.stringify(storage.value));
 	});
 
-	return store;
+	return storage;
 };
