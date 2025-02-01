@@ -69,17 +69,3 @@
 		</Select.Content>
 	</Select.Root>
 </div>
-<div>
-	<Label>Your 1st year average</Label>
-	<Select.Root
-		type="single"
-		bind:value={() => `${formData.value.annual1}`, (v) => (formData.value.annual1 = +v)}
-	>
-		<Select.Trigger>{formData.value.annual1 || 'First year average'}</Select.Trigger>
-		<Select.Content>
-			{#each formFields.annual1 as value}
-				<Select.Item {value} label={value}>{value}</Select.Item>
-			{/each}
-		</Select.Content>
-	</Select.Root>
-</div>

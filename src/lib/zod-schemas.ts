@@ -39,7 +39,7 @@ export const formSchema = z.object({
 	bacSpecialty: z.enum(['Science', 'Mathematics', 'Technical maths'], {
 		message: 'Please select your specialty'
 	}),
-	hoursPerWeek: z.enum(['10-17', '18-25', '26-33', '34-51', 'More than 41'], {
+	hoursPerWeek: z.enum(['10-17', '18-25', '26-33', '34-41', '41-60'], {
 		message: 'Please select your weekly study hours'
 	}),
 	studyPlace: z.enum(["In the school's library", 'In your room (dorms)', "In the dorms' library"], {
@@ -100,10 +100,7 @@ export const formSchema = z.object({
 		.min(0, 'Rating must be at least 0')
 		.max(10, 'Rating must not exceed 10'),
 
-	annual1: z.coerce
-		.number({ message: 'Please enter your first year annual grade' })
-		.min(0, 'Grade must be at least 0')
-		.max(20, 'Grade must not exceed 20')
+	
 });
 
 export type FormSchema = typeof formSchema;

@@ -2,7 +2,7 @@ export const formFields = {
 	gender: ['Male', 'Female'],
 	currentYear: ['First year', 'Second year', 'Third year', 'Fourth year'],
 	bacSpecialty: ['Science', 'Mathematics', 'Technical maths'],
-	hoursPerWeek: ['10-17', '18-25', '26-33', '34-51', 'More than 41'],
+	hoursPerWeek: ['10-17', '18-25', '26-33', '34-41', '41-60'],
 	studyPlace: ["In the school's library", 'In your room (dorms)', "In the dorms' library"],
 	studyCompanion: ['Alone', 'In peer', 'With a group'],
 	learningMethods: [
