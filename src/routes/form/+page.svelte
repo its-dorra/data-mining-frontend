@@ -22,6 +22,8 @@
 
 	let isDialogOpen = $state(false);
 
+	let predictResult = $state('');
+
 	const closeDialog = (isOpen: boolean) => {
 		isDialogOpen = isOpen;
 	};
@@ -86,7 +88,26 @@
 		checkFormData();
 		if (error) return;
 		loading = true;
-		await new Promise((resolve) => setTimeout(resolve, 2000));
+		await fetch('https://data-mining-backend.vercel.app/api/submit-survey', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(formData.value)
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				predictResult = JSON.stringify(data, null, 2);
+				formData.value = {} as FormData;
+				step.value = 1;
+			})
+			.catch((err) => {
+				console.error(err);
+			})
+			.finally(() => {
+				loading = false;
+				isDialogOpen = true;
+			});
 		loading = false;
 		isDialogOpen = true;
 		console.log(formData.value);
@@ -152,4 +173,4 @@
 	</Card.Card>
 	<Progress class="max-w-lg shadow-lg" value={step.value} max={4} />
 </div>
-<Dialog {closeDialog} isOpen={isDialogOpen} />
+<Dialog {predictResult} {closeDialog} isOpen={isDialogOpen} />

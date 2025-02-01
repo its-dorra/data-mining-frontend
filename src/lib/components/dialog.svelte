@@ -2,8 +2,11 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import Button from './ui/button/button.svelte';
 
-	const { isOpen, closeDialog }: { isOpen: boolean; closeDialog: (isOpen: boolean) => void } =
-		$props();
+	const {
+		isOpen,
+		closeDialog,
+		predictResult
+	}: { isOpen: boolean; closeDialog: (isOpen: boolean) => void; predictResult: string } = $props();
 </script>
 
 <Dialog.Root open={isOpen} onOpenChange={closeDialog}>
@@ -16,6 +19,9 @@
 		</Dialog.Header>
 
 		<!-- result -->
+		<pre>
+			{predictResult}
+		 </pre>
 
 		<Dialog.Footer>
 			<Button variant="destructive" onclick={() => closeDialog(false)}>Close</Button>
