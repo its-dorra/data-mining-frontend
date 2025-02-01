@@ -63,8 +63,7 @@
 				!formData.value.englishRating ||
 				!formData.value.mathsRating ||
 				!formData.value.csRating ||
-				!formData.value.programmingRating ||
-				!formData.value.annual1
+				!formData.value.programmingRating
 			) {
 				error = 'Please fill all the fields in this step.';
 			}
